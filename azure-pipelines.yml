@@ -16,7 +16,7 @@ variables:
   value: T8s5J1skbmY3dX6gubvO9cZi37rRuHGQh4Xm7EzEBDzgUs44Gh
 
 - name: LT_BUILD_NAME
-  value: LT_BUILD_NAME_K
+  value: LT_BUILD_NAME_Kaustubh
 
 steps:
 - task: NodeTool@0
@@ -25,7 +25,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install
+    npm install 
     npm test
   displayName: 'npm install and build'
   
