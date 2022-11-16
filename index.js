@@ -26,6 +26,8 @@ const USERNAME = process.env.LT_USERNAME;
 // AccessKey:  AccessKey can be generated from automation dashboard or profile section
 const KEY = process.env.LT_ACCESS_KEY;
 
+const BUILD = process.env.LT_BUILD_NAME;
+
 // gridUrl: gridUrl can be found at automation dashboard
 const GRID_HOST = 'hub.lambdatest.com/wd/hub';
 
@@ -44,7 +46,7 @@ function searchTextOnGoogle() {
         // console: true,
         // video: true,
         name: 'Test 1', // name of the test
-        build: 'NodeJS build' // name of the build
+        build: `${BUILD}` // name of the build
     }
 
     // URL: https://{username}:{accessToken}@beta-hub.lambdatest.com/wd/hub
@@ -57,22 +59,22 @@ function searchTextOnGoogle() {
         .build();
 
     // navigate to a url, click on the first and second list items and add a new one in the list.
-    driver.get('https://lambdatest.github.io/sample-todo-app/').then(function() {
-        driver.findElement(webdriver.By.name('li1')).click().then(function(){
-           console.log("Successfully clicked first list item.");
+    driver.get('https://lambdatest.github.io/sample-todo-app/').then(function () {
+        driver.findElement(webdriver.By.name('li1')).click().then(function () {
+            console.log("Successfully clicked first list item.");
         });
-        driver.findElement(webdriver.By.name('li2')).click().then(function(){
+        driver.findElement(webdriver.By.name('li2')).click().then(function () {
             console.log("Successfully clicked second list item.");
-         });
+        });
 
-         driver.findElement(webdriver.By.id('sampletodotext')).sendKeys('Complete Lambdatest Tutorial\n').then(function(){
-             driver.findElement(webdriver.By.id('addbutton')).click().then(function(){
-                 console.log("Successfully added a new task.");
-             })
-         });
+        driver.findElement(webdriver.By.id('sampletodotext')).sendKeys('Complete Lambdatest Tutorial\n').then(function () {
+            driver.findElement(webdriver.By.id('addbutton')).click().then(function () {
+                console.log("Successfully added a new task.");
+            })
+        });
 
-    }).catch(function(err){
-        console.log("test failed with reason "+err)
+    }).catch(function (err) {
+        console.log("test failed with reason " + err)
         driver.executeScript('lambda-status=failed');
         driver.quit();
     });
