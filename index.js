@@ -35,19 +35,36 @@ const GRID_HOST = 'hub.lambdatest.com/wd/hub';
 function searchTextOnGoogle() {
 
     // Setup Input capabilities
+
     const capabilities = {
-        platform: 'windows 10',
-        browserName: 'chrome',
-        version: 'latest',
-        resolution: '1280x800',
-        // geoLocation : "US",
-        // network: true,
-        // visual: true,
-        // console: true,
-        // video: true,
-        name: 'Test 1', // name of the test
-        build: `${BUILD}` // name of the build
+        "browserName": "Chrome",
+        "browserVersion": "106.0",
+        "LT:Options": {
+            "username": `${USERNAME}`,
+            "accessKey": `${KEY}`,
+            "platformName": "Windows 11",
+            "resolution": "1920x1080",
+            "build": `${BUILD}`,
+            "name": 'Test 1',
+            "project": "Untitled",
+            "w3c": true,
+            "plugin": "node_js-node_js"
+        }
     }
+
+    // const capabilities = {
+    //     platform: 'windows 10',
+    //     browserName: 'chrome',
+    //     version: 'latest',
+    //     resolution: '1280x800',
+    //     // geoLocation : "US",
+    //     // network: true,
+    //     // visual: true,
+    //     // console: true,
+    //     // video: true,
+    //     name: 'Test 1', // name of the test
+    //     build: `${BUILD}` // name of the build
+    // }
 
     // URL: https://{username}:{accessToken}@beta-hub.lambdatest.com/wd/hub
     const gridUrl = 'https://' + USERNAME + ':' + KEY + '@' + GRID_HOST;
