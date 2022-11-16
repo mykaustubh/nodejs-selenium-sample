@@ -1,0 +1,33 @@
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+- name: LT_USERNAME
+  value: kaustubh
+
+- name: LT_ACCESS_KEY
+  value: T8s5J1skbmY3dX6gubvO9cZi37rRuHGQh4Xm7EzEBDzgUs44Gh
+
+- name: LT_BUILD_NAME
+  value: LT_BUILD_NAME_K
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm run build
+  displayName: 'npm install and build'
+  
+# Node.js
+- task: LambdatestResults@1
